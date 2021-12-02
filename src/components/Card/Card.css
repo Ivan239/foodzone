@@ -1,0 +1,53 @@
+.card {
+    border-radius: 12px;
+    width: 312px;
+    height: 231px;
+    background-color: rgba(255, 255, 255, 0.24);
+    margin-left: 24px;
+    margin-top: 24px;
+}
+
+.image {
+    border-radius: 12px;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.card:hover .image {
+    display: none;
+}
+
+.card:hover {
+    background-color: white;
+}
+
+.title {
+    display: none;
+}
+
+.card:hover .title {
+    display: block;
+    font-size: 20px;
+}
+
+.card:hover .like {
+    display: block;
+    margin-top: 0.5px;
+}
+
+.like {
+    margin-left: 260px;
+    margin-top: -240px;
+    width: 30px;
+    height: 30px;
+}
+
+.red_like {
+    height: 100%;
+    width: 100%;
+}
+
+.white_like {
+    height: 100%;
+    width: 100%;
+}

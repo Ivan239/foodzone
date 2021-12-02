@@ -1,0 +1,20 @@
+.barbutton {
+    height: 60px;
+    width: 150px;
+    font-size: 10px;
+    color: #301934;
+    border: 1px solid #301934;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition-property: background-color, border, box-shadow;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    background-color: white;
+    font-family: "Titan One";
+    font-size: 22px;
+}
+
+.barbutton:hover {
+    border-color: #fcc521;
+    background-color: #fcc521;
+}
