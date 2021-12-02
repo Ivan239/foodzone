@@ -1,0 +1,23 @@
+.button {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    transition-property: background-color, border, box-shadow;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    color: #301934;
+    border: 1px solid #301934;
+    background-color: white;
+    border-radius: 4px;
+    font-family: "Titan One";
+    font-size: 36px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .button:hover {
+    border-color: #fcc521;
+    background-color: #fcc521;
+  }
+
+  

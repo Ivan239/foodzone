@@ -1,0 +1,8 @@
+.results {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1200px;
+    margin: auto auto;
+    margin-bottom: 50px;
+}
