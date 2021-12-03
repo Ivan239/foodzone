@@ -15,9 +15,8 @@ function Card(props) {
     return <div className='card'>
         <img src={image} alt={title} className='image' />
         <div className='like'>
-            {console.log(favouriteDishes, dish, favouriteDishes.indexOf(dish))}
             {
-                favouriteDishes.indexOf(dish) !== -1 ? <img src={red_like} alt='red_like' className='red_like' onClick={() => {
+                favouriteDishes.includes(dish) !== -1 ? <img src={red_like} alt='red_like' className='red_like' onClick={() => {
                     deleteFromFavourite(dish.id);
                 }} /> :
                     <img src={white_like} alt='white_like' className='white_like' onClick={() => {
