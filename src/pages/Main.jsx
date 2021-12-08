@@ -1,37 +1,49 @@
 import { Button } from "../components/Button/Button";
 import { Search } from "../components/Search/Search";
 import styles from "./MainButtons.css"
-import { useAuth0 } from '@auth0/auth0-react'
 import { Results } from '../components/Results/Results'
+import { $dishes } from '../models/dishes'
+import { useStore } from 'effector-react'
+import { NavLink } from 'react-router-dom'
+import firebase from 'firebase'
+import { useState } from 'react'
+import { $account, addAccount } from "../models/account";
 
-function Main(props) {
-    const {
-        dishes,
-        update,
-        addToFavourite,
-        favouriteDishes,
-        deleteFromFavourite,
-    } = props
-
-    const {
-        loginWithRedirect,
-        logout,
-        user,
-        isAuthenticated,
-      } = useAuth0()
+function Main() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const dishes = useStore($dishes);
+    const account = useStore($account)
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            setIsAuthenticated(true)
+            user.providerData.forEach((userInfo) => {
+                if (user !== account) {
+                    addAccount(userInfo)
+                }
+            })
+        } else {
+            $account.reset()
+            setIsAuthenticated(false)
+        }
+    });
 
     return <div className='main'>
         {!isAuthenticated ? <div className='reg_btn'>
-            <Button onClick={loginWithRedirect}>Sign Up</Button>
+            <NavLink to='/Register'>
+                <Button>
+                    Sign Up
+                </Button>
+            </NavLink>
             <div className="margin" />
-            <Button onClick={loginWithRedirect}>Sign In</Button>
+            <NavLink to='/Authorise'>
+                <Button>
+                    Sign In
+                </Button>
+            </NavLink>
         </div> :
             <div className='main_page'>
-                <Search update={update}/>
-                <Results dishes={dishes} addToFavourite={addToFavourite} favouriteDishes={favouriteDishes} deleteFromFavourite={deleteFromFavourite} />
-                <div className='reg_btn'>
-                    <Button onClick={logout}>Logout</Button>
-                </div>
+                <Search />
+                <Results dishes={dishes} />
             </div>
         }
     </div>

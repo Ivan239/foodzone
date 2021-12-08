@@ -2,17 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Auth0Provider } from '@auth0/auth0-react'
+import firebase from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAXj5nzYB2RMr8wg-uZ7MkpHyKzoriTocw",
+  authDomain: "food-zone-1638632865343.firebaseapp.com",
+  databaseURL: "https://food-zone-1638632865343-default-rtdb.firebaseio.com",
+  projectId: "food-zone-1638632865343",
+  storageBucket: "food-zone-1638632865343.appspot.com",
+  messagingSenderId: "117016740296",
+  appId: "1:117016740296:web:9471845f5b3f65907040fd",
+  measurementId: "G-BFFZB1ZE5R"
+}
+
+firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-8fuiu-co.us.auth0.com"
-      clientId="RgZw0eXEGR4A2R5Rzl4JpZInhVyjphF9"
-      redirectUri={window.location.origin}
-    >
       <App />
-    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

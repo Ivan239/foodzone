@@ -1,13 +1,10 @@
 import { Results } from '../components/Results/Results'
+import { useStore } from 'effector-react'
+import { $favouriteDishes } from '../models/favouriteDishes';
 
-function Favourites(props) {
-    const {
-        favouriteDishes,
-        addToFavourite,
-        deleteFromFavourite,
-    } = props;
-
-    return <Results dishes={favouriteDishes} favouriteDishes={favouriteDishes} addToFavourite={addToFavourite} deleteFromFavourite={deleteFromFavourite} />
+function Favourites() {
+    const dishes = useStore($favouriteDishes)
+    return <Results dishes={dishes}/>
 }
 
 export { Favourites };
