@@ -1,6 +1,7 @@
 import styles from './search.css'
 import button from '../../assets/search.svg'
 import React from 'react';
+import { updateDishes } from "../../models/dishes/index";
 
 class Search extends React.Component {
     state = {
@@ -12,7 +13,7 @@ class Search extends React.Component {
 
     handleKey = (e) => {
         if (e.key === 'Enter') {
-            this.props.update(this.state.search);
+            updateDishes(this.state.search)
         }
     };
 

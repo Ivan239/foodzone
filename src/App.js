@@ -2,6 +2,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  useParams,
 } from "react-router-dom";
 import './App.css';
 import { Logo } from './components/Logo/Logo';
@@ -9,70 +10,68 @@ import { Main } from './pages/Main'
 import NotFoundPage from './pages/NotFoundPage';
 import React from 'react'
 import { TopBar } from "./components/TopBar/TopBar";
-import randomSearch from "./components/randomSearch";
+//import randomSearch from "./components/randomSearch";
 import { Favourites } from "./pages/Favourites";
+import { initDishes, fetchDishesFx } from "./models/dishes";
+import { setLoading, $loading } from "./models/loading";
+import { $favouriteDishes, initFavouriteDishes } from "./models/favouriteDishes";
+import firebase from 'firebase';
+import { Register } from "./pages/Register";
+import { Authorise } from './pages/Authorise';
+import { Logout } from "./pages/Logout";
+import { $account, addAccount } from "./models/account";
+import { Dish } from "./pages/Dish";
 
 export const buttons = [
   { name: 'Main' },
   { name: 'Favourites' },
   { name: 'Week Menu' },
-  { name: 'Button 4' }
+  { name: 'Logout' }
 ]
 
 class App extends React.Component {
-  state = {
-    dishes: [],
-    loading: true,
-    favouriteDishes: [],
-  };
 
   componentDidMount() {
-    let str = randomSearch();
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=5b7594bb9ce44dab92220481200c5f4c&query=${str}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ dishes: data.results, loading: false })
-      })
-      .catch((err) => {
-        console.error(err);
-        this.setState({ loading: false });
-      });
-  }
-
-  update = (str) => {
-    this.setState({ loading: true });
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=5b7594bb9ce44dab92220481200c5f4c&query=${str}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ dishes: data.results, loading: false })
-      })
-      .catch((err) => {
-        console.error(err);
-        this.setState({ loading: false });
-      });
-  };
-
-  addToFavourite = (newDish) => {
-    this.setState({favouriteDishes: [...this.state.favouriteDishes, newDish]});
-  }
-
-  deleteFromFavourite = (id) => {
-    this.setState({favouriteDishes: this.state.favouriteDishes.filter(dish => dish.id !== id)});
+    $favouriteDishes.watch(value => {
+      if (value.length < 1) {
+        const database = firebase.database().ref('favouriteDishes');
+        database.on('value', (elem) => {
+          if (elem.val() !== null) {
+            //initFavouriteDishes(Object.values(elem.val()));
+          }
+        })
+      }
+    })
+    let str = 'a';//randomSearch();
+    fetchDishesFx({ str: str })
+    fetchDishesFx.done.watch(({ result }) => {
+      initDishes(result.results)
+    })
   }
 
   render() {
+    let loading;
+    $loading.watch(value => {
+      loading = value;
+    })
+    let account;
+    $account.watch(value => {
+      account = value;
+    })
     return (
       <BrowserRouter>
         <Logo />
-        <TopBar />
+        { account.length !== 0 ? <TopBar /> : console.log('failed') }
         {
-          this.state.loading ? <div>Loading...</div> :
+          loading ? <div>Loading...</div> :
             <Routes>
-              <Route path="/" element={<Main dishes={this.state.dishes} update={this.update} />} />
-              <Route path="/Main" element={<Main dishes={this.state.dishes} update={this.update} addToFavourite={this.addToFavourite} favouriteDishes={this.state.favouriteDishes} deleteFromFavourite={this.deleteFromFavourite} />} />
-              <Route path="/Favourites" element={<Favourites favouriteDishes={this.state.favouriteDishes} addToFavourite={this.addToFavourite} deleteFromFavourite={this.deleteFromFavourite} />} />
+              <Route path="/" element={<Main />} />
+              <Route path="/Main" element={<Main />} />
+              <Route path="/Register" element={<Register />} />
+              <Route path="/Authorise" element={<Authorise />} />
+              <Route path="/Favourites" element={<Favourites />} />
+              <Route path="/Logout" element={<Logout />} />
+              <Route path="/dishes/:dishId" element={<Dish />}/>
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
         }
