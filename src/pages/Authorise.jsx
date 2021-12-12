@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../components/Button/Button";
 import firebase from 'firebase';
 import { NavLink } from "react-router-dom";
-import styles from './Form.css'
+import'./Form.css'
 
 class Authorise extends React.Component {
     constructor(props) {

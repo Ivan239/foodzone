@@ -1,5 +1,5 @@
 import { Card } from '../Card/Card'
-import styles from './Results.css'
+import './Results.css'
 import firebase from 'firebase'
 
 function Results(props) {

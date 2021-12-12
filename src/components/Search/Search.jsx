@@ -1,4 +1,4 @@
-import styles from './search.css'
+import './search.css'
 import button from '../../assets/search.svg'
 import React from 'react';
 import { updateDishes } from "../../models/dishes/index";

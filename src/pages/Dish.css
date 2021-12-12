@@ -3,6 +3,23 @@
     margin: auto auto;
 }
 
-.dish_text {
+.dish_image {
+    width: 600px;
+    height: 300px;
+}
+
+.dish_info {
+    display: flex;
+    flex-direction: row;
+}
+
+.dish_steps {
+    margin-top: -5px;
+    margin-left: 20px;
+}
+
+.step {
     font-size: 20px;
+    text-align: start;
+    margin-bottom: 9px;
 }

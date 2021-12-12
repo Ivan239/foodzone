@@ -2,7 +2,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  useParams,
 } from "react-router-dom";
 import './App.css';
 import { Logo } from './components/Logo/Logo';
@@ -21,6 +20,9 @@ import { Authorise } from './pages/Authorise';
 import { Logout } from "./pages/Logout";
 import { $account, addAccount } from "./models/account";
 import { Dish } from "./pages/Dish";
+import { WeekMenu } from "./pages/WeekMenu";
+import { weekDays } from "./components/weekData";
+import { $weekDishes, initWeek } from "./models/weekDishes";
 
 export const buttons = [
   { name: 'Main' },
@@ -32,6 +34,7 @@ export const buttons = [
 class App extends React.Component {
 
   componentDidMount() {
+    weekDays.map(day => initWeek(day))
     $favouriteDishes.watch(value => {
       if (value.length < 1) {
         const database = firebase.database().ref('favouriteDishes');
@@ -61,7 +64,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Logo />
-        { account.length !== 0 ? <TopBar /> : console.log('failed') }
+        {account.length !== 0 ? <TopBar /> : console.log('failed')}
         {
           loading ? <div>Loading...</div> :
             <Routes>
@@ -71,7 +74,8 @@ class App extends React.Component {
               <Route path="/Authorise" element={<Authorise />} />
               <Route path="/Favourites" element={<Favourites />} />
               <Route path="/Logout" element={<Logout />} />
-              <Route path="/dishes/:dishId" element={<Dish />}/>
+              <Route path="/dishes/:dishId" element={<Dish />} />
+              <Route path="/Week%20Menu" element={<WeekMenu />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
         }

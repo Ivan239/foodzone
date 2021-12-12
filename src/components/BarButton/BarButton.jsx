@@ -1,4 +1,4 @@
-import styles from './BarButton.css'
+import './BarButton.css'
 import { NavLink } from 'react-router-dom'
 
 function BarButton(props) {

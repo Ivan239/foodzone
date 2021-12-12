@@ -1,0 +1,17 @@
+.external_day {
+    border: solid 1px #301934;
+    height: 25px;
+    margin-top: 0px;
+}
+
+.day_name {
+    margin-top: -0px;
+}
+
+.eat_day {
+    border: solid 1px #301934;
+    margin-left: -153px;
+    width: 150px;
+    margin-top: -27px;
+    background-color: #ffffc3;;
+}

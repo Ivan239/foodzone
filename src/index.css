@@ -14,3 +14,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body h1 {
+  font-size: 60px;
+}
+
+body h2 {
+  font-size: 45px;
+}
+
+body h3 {
+  font-size: 35px;
+}
+
+body p {
+  font-size: 22px;
+}

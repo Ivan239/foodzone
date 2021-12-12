@@ -1,6 +1,6 @@
 import { Button } from "../components/Button/Button";
 import { Search } from "../components/Search/Search";
-import styles from "./MainButtons.css"
+import "./MainButtons.css"
 import { Results } from '../components/Results/Results'
 import { $dishes } from '../models/dishes'
 import { useStore } from 'effector-react'

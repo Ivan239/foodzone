@@ -1,0 +1,11 @@
+.bin {
+    width: 30px;
+    height: 30px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.dish_title {
+    display: flex;
+    justify-content: center;
+}

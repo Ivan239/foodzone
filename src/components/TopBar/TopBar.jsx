@@ -1,5 +1,5 @@
 import { BarButton } from "../BarButton/BarButton";
-import styles from './TopBar.css'
+import './TopBar.css'
 import { buttons } from '../../App'
 
 function TopBar() {
