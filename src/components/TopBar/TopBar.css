@@ -1,7 +1,5 @@
 .topbar {
     display: flex;
     justify-content: center;
-    height: 60px;
-    width: 600px;
-    margin: -30px auto 100px auto;
+    margin: 0 auto 48px;
 }

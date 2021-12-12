@@ -72,6 +72,7 @@ class App extends React.Component {
       account = value;
     })
     return (
+        <div className="app">
       <BrowserRouter>
         <Logo />
         {account.length !== 0 ? <TopBar /> : console.log('failed')}
@@ -90,6 +91,7 @@ class App extends React.Component {
             </Routes>
         }
       </BrowserRouter>
+        </div>
     );
   }
 }

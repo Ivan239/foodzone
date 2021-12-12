@@ -8,7 +8,7 @@ function BarButton(props) {
 
     return <div>
         <NavLink to={`/${name}`}>
-            <button className='barbutton'>{name}</button>
+            <button className='barbutton'><h4>{name}</h4></button>
         </NavLink>
     </div>
 }
