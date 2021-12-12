@@ -1,9 +1,9 @@
-import styles from './Logo.css'
+import './Logo.css'
 import { NavLink } from 'react-router-dom'
 
 function Logo() {
-    return <NavLink to='/' className='link'>
-        <div className={styles.Logo}>FoodZone</div>
+    return <NavLink to='/' className='logo'>
+        <h1>FoodZone</h1>
     </NavLink>
 }
 

@@ -1,12 +1,7 @@
-
-div {
-    font-family: "Titan One";
-    font-size: 75px;
+.logo {
+    display: block;
+    text-decoration: none;
+    margin: 48px 0 24px;
     text-align: center;
     color: #301934;
-    margin-top: 50px;
-}
-
-.link {
-    text-decoration: none;
 }

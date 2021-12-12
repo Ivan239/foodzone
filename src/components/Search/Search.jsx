@@ -17,10 +17,6 @@ class Search extends React.Component {
         }
     };
 
-    handleSearch = () => {
-        this.props.update(this.state.search);
-    };
-
     render() {
         return <div className='search'>
             <input

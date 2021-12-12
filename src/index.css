@@ -8,6 +8,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #F8F8D9;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 code {
@@ -16,19 +19,31 @@ code {
 }
 
 body h1 {
-  font-size: 60px;
+  font-family: "Titan One";
+  font-size: 48px;
+  line-height: 56px;
 }
 
 body h2 {
-  font-size: 45px;
+  font-family: "Titan One";
+  font-size: 36px;
+  line-height: 40px;
 }
 
 body h3 {
-  font-size: 35px;
+  font-family: "Titan One";
+  font-size: 28px;
+  line-height: 32px;
 }
 
-body p {
+body h4 {
+  font-family: "Titan One";
+  font-size: 24px;
+  line-height: 28px;
+}
+
+body h6 {
+  font-family: "Titan One";
   font-size: 17px;
   line-height: 24px;
-  font-weight: 400;
 }
