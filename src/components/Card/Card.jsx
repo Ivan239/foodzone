@@ -9,6 +9,7 @@ import { initFavouriteDishes } from "../../models/favouriteDishes";
 import { $account } from '../../models/account'
 import { NavLink } from 'react-router-dom'
 import { ExtDish } from '../ExtDish/ExtDish'
+import getNumber from '../getNumber'
 
 
 function Card(props) {
@@ -37,25 +38,15 @@ function Card(props) {
                 <div className='like'>
                     {
                         favouriteDishes.indexOf(dish) !== -1 ? <img src={red_like} alt='red_like' className='red_like' onClick={(e) => {
-                            let key;
-                            let favouriteDishesDB = updateDatabase(database).ref(`users/${userId}/favouriteDishes`);
-                            favouriteDishesDB.on('value', (elem) => {
-                                if (elem.val() !== null) {
-                                    const keys = Object.keys(elem.val())
-                                    key = keys[favouriteDishes.indexOf(dish)];
-                                }
-                            })
+                            const title = getNumber(dish.title);
+                            database.ref(`users/${userId}/favouriteDishes/${title}`).remove();
                             deleteFromFavourite(dish.id);
-                            if (key !== undefined) {
-                                database.ref(`users/${userId}/favouriteDishes`).child(key).remove();
-                                favouriteDishesDB = updateDatabase(database).ref(`users/${userId}/favouriteDishes`);
-                            }
                             e.preventDefault();
                         }} /> :
                             <img src={white_like} alt='white_like' className='white_like' onClick={(e) => {
-
+                                const title = getNumber(dish.title);
+                                database.ref(`users/${userId}/favouriteDishes/${title}`).push(dish);
                                 addToFavourite(dish);
-                                database.ref(`users/${userId}/favouriteDishes`).push(dish);
                                 e.preventDefault();
                             }} />
                     }

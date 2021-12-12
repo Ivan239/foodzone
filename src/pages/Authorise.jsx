@@ -26,8 +26,7 @@ class Authorise extends React.Component {
     createAccountGoogle = () => {
         const auth = firebase.auth()
         const provider = new firebase.auth.GoogleAuthProvider();
-        const { user } = auth.signInWithRedirect(provider);
-        console.log(user)
+        auth.signInWithRedirect(provider);
     }
 
     render() {

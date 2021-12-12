@@ -23,6 +23,8 @@ import { Dish } from "./pages/Dish";
 import { WeekMenu } from "./pages/WeekMenu";
 import { weekDays } from "./components/weekData";
 import { $weekDishes, initWeek } from "./models/weekDishes";
+import { useStore } from 'effector-react'
+//import getNumber from "./components/getNumber";
 
 export const buttons = [
   { name: 'Main' },
@@ -31,20 +33,28 @@ export const buttons = [
   { name: 'Logout' }
 ]
 
+/*
+        const  userId = getNumber(user.id);
+        const database = firebase.database().ref(`users/${userId}/favouriteDishes`);
+        database.on('value', (elem) => {
+          if (elem.val() !== null) {
+            console.log(Object.values(elem.val()), '123')
+            const initFav = Object.values(elem.val()).map(dish => Object.values(dish)['0'])
+            console.log(initFav)
+            initFavouriteDishes(initFav);
+          }
+        })
+
+*/
+
 class App extends React.Component {
 
   componentDidMount() {
     weekDays.map(day => initWeek(day))
     $favouriteDishes.watch(value => {
-      if (value.length < 1) {
-        const database = firebase.database().ref('favouriteDishes');
-        database.on('value', (elem) => {
-          if (elem.val() !== null) {
-            //initFavouriteDishes(Object.values(elem.val()));
-          }
-        })
-      }
+
     })
+
     let str = 'a';//randomSearch();
     fetchDishesFx({ str: str })
     fetchDishesFx.done.watch(({ result }) => {

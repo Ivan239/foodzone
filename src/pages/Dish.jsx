@@ -10,7 +10,7 @@ function Dish() {
     const [dish, setDish] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios(`https://api.spoonacular.com/recipes/informationBulk?apiKey=5b7594bb9ce44dab92220481200c5f4c&ids=${params.dishId}`)
+            const result = await axios(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${FOOD_API_KEY_2}&ids=${params.dishId}`)
             setDish(result.data[0])
         }
         fetchData();
@@ -21,14 +21,17 @@ function Dish() {
     if (dish && dish.analyzedInstructions) {
         receipe = dish.analyzedInstructions[0].steps.map(el => el.step)
     }
-    console.log(receipe);
     return dish ?
         <div className='dish'>
             <h1 className='dish_title'>{dish.title}</h1>
             <div className='dish_info'>
                 <img className='dish_image' src={dish.image} alt={dish.title} />
                 <ol className='dish_steps'>
-                    {receipe.map(el => <li className='step'>{el}</li>)}
+                    {receipe.map(el => <li className='step'>
+                        <p>
+                            {el}
+                        </p>
+                    </li>)}
                 </ol>
             </div>
         </div>
