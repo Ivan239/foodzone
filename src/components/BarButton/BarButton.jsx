@@ -7,7 +7,7 @@ function BarButton(props) {
     } = props
 
     return <div>
-        <NavLink to={`/${name}`}>
+        <NavLink to={`/foodzone/${name}`}>
             <button className='barbutton'><h4>{name}</h4></button>
         </NavLink>
     </div>
