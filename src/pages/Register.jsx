@@ -24,7 +24,7 @@ class Register extends React.Component {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => firebase.auth().signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    toast.success("Login successfull")
+                    toast.success("Register successfull")
                 })
                 .catch(error => {
                     toast.error(`${error.message} Please try again.`, {
