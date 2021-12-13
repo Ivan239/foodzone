@@ -59,13 +59,13 @@ class Authorise extends React.Component {
                 onChange={this.handleChange}
                 id='password'
             />
-            <NavLink to='/' className='submit'>
+            <NavLink to='/foodzone/' className='submit'>
                 <Button onClick={this.createAccount}>
                     Submit
                 </Button>
             </NavLink>
             <p className='or'>or</p>
-            <NavLink to='/' className='submit'>
+            <NavLink to='/foodzone/' className='submit'>
                 <Button onClick={this.createAccountGoogle}>Sign in with Google</Button>
             </NavLink>
         </div>

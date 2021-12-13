@@ -24,7 +24,7 @@ class Register extends React.Component {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => firebase.auth().signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    toast.success("Register successfull")
+                    toast.success("Registered successfull")
                 })
                 .catch(error => {
                     toast.error(`${error.message} Please try again.`, {
@@ -67,13 +67,13 @@ class Register extends React.Component {
                 onChange={this.handleChange}
                 id='password'
             />
-            <NavLink to='/' className='submit'>
+            <NavLink to='/foodzone/' className='submit'>
                 <Button onClick={this.createAccount}>
                     Submit
                 </Button>
             </NavLink>
             <p className='or'>or</p>
-            <NavLink to='/' className='submit'>
+            <NavLink to='/foodzone/' className='submit'>
                 <Button onClick={this.createAccountGoogle}>Sign up with Google</Button>
             </NavLink>
         </div>
