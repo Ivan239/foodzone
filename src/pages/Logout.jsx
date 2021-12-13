@@ -15,12 +15,12 @@ function Logout() {
     }
     
     return <div className='logout'>
-        <NavLink to='/foodzone/' className='logout_button'>
+        <NavLink to='/' className='logout_button'>
             <Button onClick={() => handleLogout()}>
                 Yes
             </Button>
         </NavLink>
-        <NavLink to='/foodzone/' className='logout_button'>
+        <NavLink to='/' className='logout_button'>
             <Button>
                 Go Back
             </Button>

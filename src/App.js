@@ -120,20 +120,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <BrowserRouter>
+        <BrowserRouter basename="/foodzone">
           <Logo />
           {this.state.isAuthenticated ? <TopBar /> : null}
           {
             this.state.loading ? <img src={loader} alt='Loading...' className='loading' /> :
               <Routes>
-                <Route path="/foodzone/" element={<Main />} />
-                <Route path="/foodzone/Main" element={<Main />} />
-                <Route path="/foodzone/Register" element={<Register />} />
-                <Route path="/foodzone/Authorise" element={<Authorise />} />
-                <Route path="/foodzone/Favourites" element={<Favourites />} />
-                <Route path="/foodzone/Logout" element={<Logout />} />
-                <Route path="/foodzone/dishes/:dishId" element={<Dish />} />
-                <Route path="/foodzone/Week%20Menu" element={<WeekMenu />} />
+                <Route path="/" element={<Main />} />
+                <Route path="/Main" element={<Main />} />
+                <Route path="/Register" element={<Register />} />
+                <Route path="/Authorise" element={<Authorise />} />
+                <Route path="/Favourites" element={<Favourites />} />
+                <Route path="/Logout" element={<Logout />} />
+                <Route path="/dishes/:dishId" element={<Dish />} />
+                <Route path="/Week%20Menu" element={<WeekMenu />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
           }
