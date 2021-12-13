@@ -12,8 +12,7 @@ import { TopBar } from "./components/TopBar/TopBar";
 //import randomSearch from "./components/randomSearch";
 import { Favourites } from "./pages/Favourites";
 import { initDishes, fetchDishesFx } from "./models/dishes";
-import { setLoading, $loading } from "./models/loading";
-import { $favouriteDishes, initFavouriteDishes } from "./models/favouriteDishes";
+import { initFavouriteDishes } from "./models/favouriteDishes";
 import firebase from 'firebase';
 import { Register } from "./pages/Register";
 import { Authorise } from './pages/Authorise';
@@ -21,10 +20,12 @@ import { Logout } from "./pages/Logout";
 import { $account, addAccount } from "./models/account";
 import { Dish } from "./pages/Dish";
 import { WeekMenu } from "./pages/WeekMenu";
-import { weekDays } from "./components/weekData";
-import { $weekDishes, initWeek } from "./models/weekDishes";
-import { useStore } from 'effector-react'
-//import getNumber from "./components/getNumber";
+import { eatTime, weekDays } from "./components/weekData";
+import { initWeek } from "./models/weekDishes";
+import getNumber from "./components/getNumber";
+import { ToastContainer } from 'react-toastify';
+import loader from './assets/loader.gif'
+import { $loading } from "./models/loading";
 
 export const buttons = [
   { name: 'Main' },
@@ -33,65 +34,122 @@ export const buttons = [
   { name: 'Logout' }
 ]
 
-/*
-        const  userId = getNumber(user.id);
-        const database = firebase.database().ref(`users/${userId}/favouriteDishes`);
-        database.on('value', (elem) => {
-          if (elem.val() !== null) {
-            console.log(Object.values(elem.val()), '123')
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthenticated: false,
+      loading: false,
+      favouriteDishesInitialized: false,
+      weekInitialized: false,
+    }
+  }
+
+  componentDidMount() {
+    $account.watch(value => {
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          setAccount(true);
+          user.providerData.forEach((userInfo) => {
+            if (user !== value) {
+              addAccount(userInfo)
+            }
+          })
+        } else {
+          setAccount(false);
+        }
+      });
+    })
+    const database = firebase.database();
+    $account.watch(user => {
+      const userId = getNumber(user.uid);
+      database.ref(`users/${userId}/favouriteDishes`)
+        .once('value', (elem) => {
+          if (elem.val() !== null && !this.state.favouriteDishesInitialized) {
             const initFav = Object.values(elem.val()).map(dish => Object.values(dish)['0'])
-            console.log(initFav)
             initFavouriteDishes(initFav);
           }
         })
-
-*/
-
-class App extends React.Component {
-
-  componentDidMount() {
-    weekDays.map(day => initWeek(day))
-    $favouriteDishes.watch(value => {
-
     })
+    $account.watch(user => {
+      const userId = getNumber(user.uid);
+      weekDays.map(day => {
+
+        let eats = {
+          Breakfast: {},
+          Lunch: {},
+          Dinner: {}
+        }
+        const addEats = (eat, dish) => {
+          eats[eat] = dish;
+        }
+          eatTime.map(eat => {
+
+            let dishWeek = {}
+            database.ref(`users/${userId}/weekDishes/d${day}/e${eat}`)
+              .once('value', (elem) => {
+                if (elem.val() !== null && !this.state.weekInitialized) {
+                  dishWeek = Object.values(elem.val())[0]
+                }
+                return addEats(eat, dishWeek)
+              })
+            return addEats(eat, dishWeek)
+          })
+        return initWeek({
+          day: day,
+          eat: eats
+        })
+      })
+    })
+    const setAccount = (state) => {
+      this.setState({ isAuthenticated: state })
+    }
 
     let str = 'a';//randomSearch();
+    $loading.watch(value => {
+      this.setState({loading: value})
+    })
     fetchDishesFx({ str: str })
+    this.setState({loading: true})
     fetchDishesFx.done.watch(({ result }) => {
       initDishes(result.results)
+      this.setState({loading: false})
     })
   }
 
   render() {
-    let loading;
-    $loading.watch(value => {
-      loading = value;
-    })
-    let account;
-    $account.watch(value => {
-      account = value;
-    })
     return (
-        <div className="app">
-      <BrowserRouter>
-        <Logo />
-        {account.length !== 0 ? <TopBar /> : console.log('failed')}
-        {
-          loading ? <div>Loading...</div> :
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/Main" element={<Main />} />
-              <Route path="/Register" element={<Register />} />
-              <Route path="/Authorise" element={<Authorise />} />
-              <Route path="/Favourites" element={<Favourites />} />
-              <Route path="/Logout" element={<Logout />} />
-              <Route path="/dishes/:dishId" element={<Dish />} />
-              <Route path="/Week%20Menu" element={<WeekMenu />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        }
-      </BrowserRouter>
-        </div>
+      <div className="app">
+        <BrowserRouter>
+          <Logo />
+          {this.state.isAuthenticated ? <TopBar /> : null}
+          {
+            this.state.loading ? <img src={loader} alt='Loading...' className='loading' /> :
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/Main" element={<Main />} />
+                <Route path="/Register" element={<Register />} />
+                <Route path="/Authorise" element={<Authorise />} />
+                <Route path="/Favourites" element={<Favourites />} />
+                <Route path="/Logout" element={<Logout />} />
+                <Route path="/dishes/:dishId" element={<Dish />} />
+                <Route path="/Week%20Menu" element={<WeekMenu />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+          }
+        </BrowserRouter>
+        <ToastContainer
+          position="top-right"
+          autoClose={2600}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </div>
     );
   }
 }

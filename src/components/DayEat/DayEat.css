@@ -1,11 +1,54 @@
 .bin {
     width: 30px;
     height: 30px;
-    margin-top: 40px;
-    margin-left: 20px;
 }
 
-.dish_title {
+.dish_title_eat {
+    width: 400px;
+}
+
+.dish_info_eat {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.dish_image_eat {
+    height: 260px;
+    width: 380px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dish_steps_eat {
+    width: 380px;
+    padding: 5px 5px 5px 5px;
+}
+
+.del_btn {
+    position: relative;
+    font-family: 'Titan One';
+    background-color: white;
+    border: solid 1px;
+    border-radius: 4px;
+    height: 30px;
+    cursor: pointer;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    width: 144px;
+    left: calc(400px/2 - 144px/2);
+}
+
+.del_btn p {
+    position: relative;
+    text-align: left;
+    bottom: 8px;
+}
+
+.del_btn:hover {
+    box-shadow: 2px 2px 4px rgba(0,0,0, 0.3);
+}
+
+.eat_time {
+    cursor: pointer;
 }

@@ -1,6 +1,8 @@
 .external {
+    color: black;
     width: 30px;
     height: 30px;
+    font-family: 'Titan One';
 }
 
 .external_img {
@@ -18,24 +20,15 @@
 }
 
 .external_box {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffc3;
-    width: 160px;
-    height: 216px;
-    border: solid 1px #301934;
-    margin-left: -190px;
-    margin-top: -74px;
+    background-color: white;    
+    width: 120px;
+    border: solid 1px black;
     border-radius: 4px;
 }
 
 .external_days_title {
-    height: 25px;
-    margin-top: 0px;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-    border: solid 1px #301934;
+    padding: 4px;
+    height: 20px;
 }
 
 .external_text {
@@ -43,14 +36,16 @@
 }
 
 .close {
+    position: relative;
+    left: 90px;
+    bottom: 38px;
     height: 20px;
     width: 20px;
-    margin-top: 4px;
-    margin-left: 15px;
-    margin-right: 3px;
 }
 
 .external_days {
-    margin-top: 0px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 183px;
 }
-

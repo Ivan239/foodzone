@@ -23,3 +23,53 @@
     text-align: start;
     margin-bottom: 9px;
 }
+
+.add_fav_btn {
+    position: relative;
+    left: 500px;
+    font-family: 'Titan One';
+    background-color: white;
+    border: solid 1px;
+    border-radius: 4px;
+    height: 30px;
+    cursor: pointer;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+.add_fav_btn p {
+    position: relative;
+    text-align: left;
+    bottom: 8px;
+}
+
+.add_fav_btn:hover {
+    box-shadow: 2px 2px 4px rgba(0,0,0, 0.3);
+}
+
+.week_btn {
+    position: relative;
+    left: 500px;
+    font-family: 'Titan One';
+    background-color: white;
+    border: solid 1px;
+    border-radius: 4px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+
+}
+
+.week_btn:hover {
+    box-shadow: 2px 2px 4px rgba(0,0,0, 0.3);
+}
+
+.ext_menu {
+    font-family: 'Titan One';
+    margin-left: 720px;
+    margin-top: -30px;
+}

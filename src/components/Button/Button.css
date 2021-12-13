@@ -1,20 +1,23 @@
 .button {
-    cursor: pointer;
-    box-sizing: border-box;
-    position: relative;
-    transition-property: background-color, border, box-shadow;
-    transition-duration: 0.25s;
-    transition-timing-function: ease;
-    color: #301934;
-    border: 1px solid #301934;
-    background-color: white;
-    border-radius: 4px;
-    width: 100%;
-    height: 100%;
-  }
+  font-family: 'Titan One';
+  cursor: pointer;
+  position: relative;
+  transition-property: background-color, border, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+  color: #301934;
+  border: 1px solid #301934;
+  background-color: white;
+  border-radius: 4px;
+  max-width: 180px;
+  max-height: 70px;
+}
 
-  .button:hover {
-    border-color: #fcc521;
-    background-color: #fcc521;
-  }
+.button:hover {
+  border-color: #fcc521;
+  background-color: #fcc521;
+}
 
+.button h4 {
+  margin: auto auto auto auto;
+}

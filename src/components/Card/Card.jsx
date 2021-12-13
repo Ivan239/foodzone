@@ -4,8 +4,6 @@ import white_like from '../../assets/white_like.png'
 import {$favouriteDishes, addToFavourite, deleteFromFavourite} from '../../models/favouriteDishes'
 import {useStore} from 'effector-react'
 import firebase from 'firebase'
-import updateDatabase from '../updateDatabase'
-import {initFavouriteDishes} from "../../models/favouriteDishes";
 import {$account} from '../../models/account'
 import {NavLink} from 'react-router-dom'
 import {ExtDish} from '../ExtDish/ExtDish'

@@ -10,8 +10,8 @@ function WeekMenu() {
         newWeekDays.push(weekDays[(i + dayOfWeek) % (weekDays.length)])
     }
     return <div className='weekmenu'>
-        {newWeekDays.map(day => <div className="day_menu">
-            <WeekDay key={day} day={day} />
+        {newWeekDays.map(day => <div className="day_menu" key={day}>
+            <WeekDay day={day} />
         </div>)}
     </div>
 }

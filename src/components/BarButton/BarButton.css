@@ -6,6 +6,7 @@
     transition-duration: 0.25s;
     transition-timing-function: ease;
     background-color: white;
+    cursor: pointer;
 }
 
 .barbutton:hover {

@@ -2,7 +2,8 @@ import React from "react";
 import { Button } from "../components/Button/Button";
 import firebase from 'firebase';
 import { NavLink } from "react-router-dom";
-import'./Form.css'
+import './Form.css'
+import { toast } from 'react-toastify'
 
 class Authorise extends React.Component {
     constructor(props) {
@@ -21,12 +22,24 @@ class Authorise extends React.Component {
     createAccount = () => {
         const { email, password } = this.state;
         firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => toast.success("Login successfull"))
+            .catch(error => {
+                toast.error(`${error.message} Please try again.`, {
+                    autoClose: 6500
+                })
+            })
     }
+
 
     createAccountGoogle = () => {
         const auth = firebase.auth()
         const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithRedirect(provider);
+        auth.signInWithRedirect(provider)
+            .catch(error => {
+                toast.error(`${error.message} Please try again.`, {
+                    autoClose: 6500
+                })
+            })
     }
 
     render() {

@@ -4,6 +4,7 @@ import { weekDays, eatTime } from '../weekData'
 import { useState } from 'react'
 import { ExtDay } from '../ExtDay/ExtDay'
 import close from '../../assets/close.png'
+import { ExtMenu } from '../ExtMenu/ExtMenu'
 
 function ExtDish(props) {
     const {
@@ -19,17 +20,7 @@ function ExtDish(props) {
     return <div className='external'>
         <img src={ext} alt='ext' className='external_img' onClick={(e) => showExternal(e)} />
         {showExt ?
-            <div className='external_box'>
-                <div className='external_days_title'>
-                    <p className='external_text'>
-                        Eat on:
-                    </p>
-                    <img src={close} alt="close" className="close" onClick={(e) => showExternal(e)} />
-                </div>
-                <div className='external_days'>
-                    {weekDays.map(day => <ExtDay key={day} day={day} dish={dish} />)}
-                </div>
-            </div> : null}
+            <ExtMenu dish={dish} /> : null}
 
     </div>
 }

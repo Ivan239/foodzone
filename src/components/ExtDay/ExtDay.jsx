@@ -9,19 +9,11 @@ function ExtDay(props) {
         dish,
     } = props
 
-    const [showEat, setShowEat] = useState(false)
-    const showEats = (e) => {
-        e.preventDefault();
-        setShowEat(!showEat)
-    }
-
-    return <div className='external_day' onClick={(e) => showEats(e)}>
+    return <div className='external_day'>
         <p className='day_name'>{day}</p>
-        {showEat ?
-            <div className='eat_day'>
-                {eatTime.map(eat => <ExtEat key={eat} eat={eat} day={day} dish={dish} />)}
-            </div> : null
-        }
+        <div className='eat_day'>
+            {eatTime.map(eat => <ExtEat key={eat} eat={eat} day={day} dish={dish} />)}
+        </div>
     </div>
 }
 

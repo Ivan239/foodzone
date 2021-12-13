@@ -1,0 +1,19 @@
+.day_eats {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.day_info {
+    width: 400px;
+}
+
+.weekmenu {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.week_day h1 {
+    cursor: pointer;
+}

@@ -1,9 +1,14 @@
 .external_eat {
-    border: solid 1px #301934;
-    height: 25px;
-    margin-top: 0px;
+    border: solid 1px black;
+    width: 116px;
+    transition-property: background-color, border;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    height: 23px;
+    margin: 1px 1px 0px 1px;
 }
 
-.eat_name {
-    margin-top: -0px;
+.external_eat:hover {
+    background-color: #CCC;
+    border: none;
 }
