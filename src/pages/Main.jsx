@@ -6,14 +6,11 @@ import { $dishes } from '../models/dishes'
 import { useStore } from 'effector-react'
 import { NavLink } from 'react-router-dom'
 import { $account } from "../models/account";
-import { $loading } from "../models/loading";
-import loader from '../assets/loader.gif'
 
 
 function Main() {
     const dishes = useStore($dishes);
     const account = useStore($account)
-    const loading = useStore($loading)
 
     return <div className='main'>
         {!Object.keys(account).length ? <div className='reg_btn'>

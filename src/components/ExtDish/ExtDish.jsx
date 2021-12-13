@@ -1,9 +1,6 @@
 import ext from '../../assets/dots.png'
 import './ExtDish.css'
-import { weekDays, eatTime } from '../weekData'
 import { useState } from 'react'
-import { ExtDay } from '../ExtDay/ExtDay'
-import close from '../../assets/close.png'
 import { ExtMenu } from '../ExtMenu/ExtMenu'
 
 function ExtDish(props) {

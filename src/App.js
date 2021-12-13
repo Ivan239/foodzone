@@ -9,7 +9,7 @@ import { Main } from './pages/Main'
 import NotFoundPage from './pages/NotFoundPage';
 import React from 'react'
 import { TopBar } from "./components/TopBar/TopBar";
-import randomSearch from "./components/randomSearch";
+//import randomSearch from "./components/randomSearch";
 import { Favourites } from "./pages/Favourites";
 import { initDishes, fetchDishesFx } from "./models/dishes";
 import { initFavouriteDishes } from "./models/favouriteDishes";
@@ -105,7 +105,7 @@ class App extends React.Component {
       this.setState({ isAuthenticated: state })
     }
 
-    let str = randomSearch();
+    let str = 'a'; //randomSearch();
     $loading.watch(value => {
       this.setState({loading: value})
     })

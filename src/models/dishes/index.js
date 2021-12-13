@@ -1,5 +1,5 @@
 import { createStore, createEvent, createEffect } from 'effector'
-import { FOOD_API_KEY_2, FOOD_API_KEY, FOOD_API_KEY_3 } from '../../api_keys'
+import { FOOD_API_KEY_3 } from '../../api_keys'
 import { setLoading } from '../loading';
 
 export const addDish = createEvent();

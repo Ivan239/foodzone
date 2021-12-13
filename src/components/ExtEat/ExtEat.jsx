@@ -1,7 +1,6 @@
-import { addToWeek, deleteFromWeek } from '../../models/weekDishes/index';
+import { addToWeek } from '../../models/weekDishes/index';
 import './ExtEat.css'
 import firebase from 'firebase'
-import updateDatabase from '../updateDatabase';
 import { useStore } from 'effector-react'
 import { $account } from '../../models/account'
 import getNumber from '../getNumber';

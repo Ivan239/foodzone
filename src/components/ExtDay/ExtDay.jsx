@@ -1,5 +1,4 @@
 import './ExtDay.css'
-import { useState } from 'react'
 import { eatTime } from '../weekData'
 import { ExtEat } from '../ExtEat/ExtEat'
 

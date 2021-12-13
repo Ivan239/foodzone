@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import { $weekDishes, deleteFromWeek } from '../../models/weekDishes'
 import { useStore } from 'effector-react'
-import bin from '../../assets/bin.png'
 import './DayEat.css'
 import firebase from 'firebase'
-import updateDatabase from '../updateDatabase';
 import { $account } from '../../models/account'
 import axios from 'axios';
 import { FOOD_API_KEY_2 } from '../../api_keys'
