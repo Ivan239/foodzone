@@ -13,3 +13,8 @@ API блюд - [Spoonacular](https://spoonacular.com/food-api/console#Dashboard)
 
 ## Запустить проект
 yarn start
+
+## Известные проблемы
+- переместить API Keys в env-local
+- проблемы при перезагрузке страницы
+- не везде показывает loading gif
