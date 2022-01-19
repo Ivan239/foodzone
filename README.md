@@ -7,7 +7,7 @@ CSS\
 JS+React\
 Состояния приложения - Effector\
 Уведомления - react-toastify\
-API блюд - Spoonacular(https://spoonacular.com/food-api/console#Dashboard)\
+API блюд - [Spoonacular](https://spoonacular.com/food-api/console#Dashboard) \
 Авторизация и логин (в тч через Google) - Firebase Authorisation\
 База данных пользователей - Firebase Database\
 
